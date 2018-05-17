@@ -86,6 +86,10 @@
       <Project>{831abdaa-b7e3-4c51-8c15-fc46b07f9515}</Project>
       <Name>DeviceNomad</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UcControls\UcControls.csproj">
+      <Project>{9ca313fc-e5e1-4107-82f2-e8e0a2708254}</Project>
+      <Name>UcControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
