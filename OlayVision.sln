@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OlayVision", "OlayVision\OlayVision.csproj", "{EEC7274B-40C4-4FD7-AF58-28CE4939031F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{22C10A30-DDAA-49B0-9829-B07900156830}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.txt = Readme.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceNomad", "DeviceNomad\DeviceNomad.csproj", "{831ABDAA-B7E3-4C51-8C15-FC46B07F9515}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Import", "Import", "{B9D7F2EA-7AC8-4172-BDFE-14C16E6A2F24}"
+	ProjectSection(SolutionItems) = preProject
+		Import\CLIDelegate.dll = Import\CLIDelegate.dll
+		Import\ThridLibray.dll = Import\ThridLibray.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UcControls", "UcControls\UcControls.csproj", "{9CA313FC-E5E1-4107-82F2-E8E0A2708254}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEC7274B-40C4-4FD7-AF58-28CE4939031F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC7274B-40C4-4FD7-AF58-28CE4939031F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC7274B-40C4-4FD7-AF58-28CE4939031F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC7274B-40C4-4FD7-AF58-28CE4939031F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{831ABDAA-B7E3-4C51-8C15-FC46B07F9515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831ABDAA-B7E3-4C51-8C15-FC46B07F9515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831ABDAA-B7E3-4C51-8C15-FC46B07F9515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831ABDAA-B7E3-4C51-8C15-FC46B07F9515}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CA313FC-E5E1-4107-82F2-E8E0A2708254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CA313FC-E5E1-4107-82F2-E8E0A2708254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CA313FC-E5E1-4107-82F2-E8E0A2708254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CA313FC-E5E1-4107-82F2-E8E0A2708254}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
