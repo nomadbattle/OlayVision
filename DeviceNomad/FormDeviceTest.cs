@@ -20,6 +20,7 @@ namespace DeviceNomad
         private void Init()
         {
             InitDeviceTypes();
+            InitCameraRunMode();
         }
 
         private void InitDeviceTypes()
@@ -48,6 +49,13 @@ namespace DeviceNomad
             }
         }
 
+        private void InitCameraRunMode()
+        {
+            cmbRunMode.Items.Clear();
+            cmbRunMode.Items.Add(CameraRunMode.Single);
+            cmbRunMode.Items.Add(CameraRunMode.Continue);
+        }
+
         private void FormDeviceTest_Load(object sender, EventArgs e)
         {
             if(!DesignMode)
@@ -57,6 +65,16 @@ namespace DeviceNomad
         private void cmbDeviceTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListCamerasByType();
+        }
+
+        private void btnOpenCamera_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRun_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.mainView1 = new JdLogistics.MainView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cmbRunMode = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRun = new System.Windows.Forms.Button();
+            this.btnOpenCamera = new System.Windows.Forms.Button();
             this.cmbCameraName = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,10 +54,10 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.comboBox3);
+            this.panel1.Controls.Add(this.cmbRunMode);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnRun);
+            this.panel1.Controls.Add(this.btnOpenCamera);
             this.panel1.Controls.Add(this.cmbCameraName);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -68,14 +68,14 @@
             this.panel1.Size = new System.Drawing.Size(220, 558);
             this.panel1.TabIndex = 1;
             // 
-            // comboBox3
+            // cmbRunMode
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(78, 124);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 20);
-            this.comboBox3.TabIndex = 7;
+            this.cmbRunMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRunMode.FormattingEnabled = true;
+            this.cmbRunMode.Location = new System.Drawing.Point(78, 124);
+            this.cmbRunMode.Name = "cmbRunMode";
+            this.cmbRunMode.Size = new System.Drawing.Size(121, 20);
+            this.cmbRunMode.TabIndex = 7;
             // 
             // label3
             // 
@@ -86,23 +86,25 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "运行模式";
             // 
-            // button2
+            // btnRun
             // 
-            this.button2.Location = new System.Drawing.Point(102, 89);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "运行";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnRun.Location = new System.Drawing.Point(102, 89);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(75, 23);
+            this.btnRun.TabIndex = 5;
+            this.btnRun.Text = "运行";
+            this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
-            // button1
+            // btnOpenCamera
             // 
-            this.button1.Location = new System.Drawing.Point(21, 89);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "打开相机";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnOpenCamera.Location = new System.Drawing.Point(21, 89);
+            this.btnOpenCamera.Name = "btnOpenCamera";
+            this.btnOpenCamera.Size = new System.Drawing.Size(75, 23);
+            this.btnOpenCamera.TabIndex = 4;
+            this.btnOpenCamera.Text = "打开相机";
+            this.btnOpenCamera.UseVisualStyleBackColor = true;
+            this.btnOpenCamera.Click += new System.EventHandler(this.btnOpenCamera_Click);
             // 
             // cmbCameraName
             // 
@@ -173,10 +175,10 @@
         private JdLogistics.MainView mainView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cmbRunMode;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRun;
+        private System.Windows.Forms.Button btnOpenCamera;
         private System.Windows.Forms.ComboBox cmbCameraName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

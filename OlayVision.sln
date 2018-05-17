@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Import", "Import", "{B9D7F2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UcControls", "UcControls\UcControls.csproj", "{9CA313FC-E5E1-4107-82F2-E8E0A2708254}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSetting", "AppSetting\AppSetting.csproj", "{A15D0D6D-2E45-4E5F-BF77-88644D06B5C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,14 @@ Global
 		{9CA313FC-E5E1-4107-82F2-E8E0A2708254}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9CA313FC-E5E1-4107-82F2-E8E0A2708254}.Release|x64.ActiveCfg = Release|x64
 		{9CA313FC-E5E1-4107-82F2-E8E0A2708254}.Release|x64.Build.0 = Release|x64
+		{A15D0D6D-2E45-4E5F-BF77-88644D06B5C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A15D0D6D-2E45-4E5F-BF77-88644D06B5C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A15D0D6D-2E45-4E5F-BF77-88644D06B5C1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A15D0D6D-2E45-4E5F-BF77-88644D06B5C1}.Debug|x64.Build.0 = Debug|Any CPU
+		{A15D0D6D-2E45-4E5F-BF77-88644D06B5C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A15D0D6D-2E45-4E5F-BF77-88644D06B5C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A15D0D6D-2E45-4E5F-BF77-88644D06B5C1}.Release|x64.ActiveCfg = Release|Any CPU
+		{A15D0D6D-2E45-4E5F-BF77-88644D06B5C1}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

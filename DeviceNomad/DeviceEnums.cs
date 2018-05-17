@@ -15,4 +15,10 @@ namespace DeviceNomad
     {
         Disconnected,
     }
+
+    public enum CameraRunMode
+    {
+        Single,
+        Continue,
+    }
 }
