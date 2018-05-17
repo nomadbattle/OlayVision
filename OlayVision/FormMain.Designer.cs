@@ -93,20 +93,20 @@
             // tsmiCameraSetting
             // 
             this.tsmiCameraSetting.Name = "tsmiCameraSetting";
-            this.tsmiCameraSetting.Size = new System.Drawing.Size(152, 22);
+            this.tsmiCameraSetting.Size = new System.Drawing.Size(124, 22);
             this.tsmiCameraSetting.Text = "相机设置";
             this.tsmiCameraSetting.Click += new System.EventHandler(this.tsmiCameraSetting_Click);
             // 
             // 参数设置ToolStripMenuItem
             // 
             this.参数设置ToolStripMenuItem.Name = "参数设置ToolStripMenuItem";
-            this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.参数设置ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.参数设置ToolStripMenuItem.Text = "参数设置";
             // 
             // 输出设置ToolStripMenuItem
             // 
             this.输出设置ToolStripMenuItem.Name = "输出设置ToolStripMenuItem";
-            this.输出设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.输出设置ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.输出设置ToolStripMenuItem.Text = "输出设置";
             // 
             // toolStripButton1
@@ -128,6 +128,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.toolStrip1.ResumeLayout(false);

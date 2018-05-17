@@ -16,14 +16,9 @@ namespace DeviceNomad
         public event OnImageGrabbedHandler OnImageGrabbed;
         public event OnDeviceErrorHandler OnDeviceError;
 
-        public static List<string> LiseCameraKeys()
+        public List<string> ListCameraKeys()
         {
             return null;
-        }
-
-        List<string> ICamera.ListCameraKeys()
-        {
-            return LiseCameraKeys();
         }
 
         public void InitCamera()

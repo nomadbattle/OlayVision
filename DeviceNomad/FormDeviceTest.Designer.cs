@@ -35,7 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbCameraName = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbDeviceTypes = new System.Windows.Forms.ComboBox();
@@ -58,7 +58,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.cmbCameraName);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.cmbDeviceTypes);
@@ -104,14 +104,14 @@
             this.button1.Text = "打开相机";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // cmbCameraName
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(78, 49);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 20);
-            this.comboBox2.TabIndex = 3;
+            this.cmbCameraName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCameraName.FormattingEnabled = true;
+            this.cmbCameraName.Location = new System.Drawing.Point(78, 49);
+            this.cmbCameraName.Name = "cmbCameraName";
+            this.cmbCameraName.Size = new System.Drawing.Size(121, 20);
+            this.cmbCameraName.TabIndex = 3;
             // 
             // label2
             // 
@@ -177,7 +177,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbCameraName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbDeviceTypes;

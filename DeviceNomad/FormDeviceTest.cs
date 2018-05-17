@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DeviceNomad.DahuaCam;
 
 namespace DeviceNomad
 {
@@ -30,12 +31,20 @@ namespace DeviceNomad
 
         private void ListCamerasByType()
         {
-            string type = cmbDeviceTypes.SelectedText;
+            string type = cmbDeviceTypes.SelectedValue?.ToString();
+            List<string> cameraList = new List<string>();
             if (type == DeviceType.Basler.ToString())
             {
             }
             else if (type == DeviceType.Dahua.ToString())
             {
+                cameraList = DeviceN.GetCameraKeys(DeviceType.Dahua);
+            }
+
+            cmbCameraName.Items.Clear();
+            foreach (string key in cameraList)
+            {
+                cmbCameraName.Items.Add(key);
             }
         }
 
