@@ -9,10 +9,16 @@ namespace DeviceNomad
     public class Camera : ICamera
     {
         public string CameraKey { get; set; }
+        public DeviceType CameraType { get; set; }
+        public bool IsOpen { get; set; }
+        
+        public delegate void OnCameraOpenedHandler();
+        public delegate void OnCameraClosedHandler();
+        public delegate void OnImageGrabbedHandler(Bitmap bitmap);
+        public delegate void OnDeviceErrorHandler(DeviceError errorType);
 
-        public delegate EventHandler OnImageGrabbedHandler(Bitmap bitmap);
-        public delegate EventHandler OnDeviceErrorHandler(EventHandler e, DeviceError errorType);
-
+        public event OnCameraOpenedHandler OnCameraOpened;
+        public event OnCameraClosedHandler OnCameraClosed;
         public event OnImageGrabbedHandler OnImageGrabbed;
         public event OnDeviceErrorHandler OnDeviceError;
 
@@ -25,6 +31,15 @@ namespace DeviceNomad
         {
         }
 
+        public void Open()
+        {
+            
+        }
+
+        public void Close()
+        {
+        }
+
         public void Snap()
         {
         }
@@ -34,5 +49,10 @@ namespace DeviceNomad
 
         public void StopRun()
         { }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

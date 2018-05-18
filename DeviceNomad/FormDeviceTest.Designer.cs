@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.mainView1 = new JdLogistics.MainView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbRunMode = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,17 +39,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbDeviceTypes = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.mainView1 = new JdLogistics.MainView();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // mainView1
-            // 
-            this.mainView1.Content = null;
-            this.mainView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainView1.Location = new System.Drawing.Point(0, 0);
-            this.mainView1.Name = "mainView1";
-            this.mainView1.Size = new System.Drawing.Size(602, 524);
-            this.mainView1.TabIndex = 0;
             // 
             // panel1
             // 
@@ -88,6 +79,7 @@
             // 
             // btnRun
             // 
+            this.btnRun.Enabled = false;
             this.btnRun.Location = new System.Drawing.Point(102, 89);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(75, 23);
@@ -98,6 +90,7 @@
             // 
             // btnOpenCamera
             // 
+            this.btnOpenCamera.Enabled = false;
             this.btnOpenCamera.Location = new System.Drawing.Point(21, 89);
             this.btnOpenCamera.Name = "btnOpenCamera";
             this.btnOpenCamera.Size = new System.Drawing.Size(75, 23);
@@ -114,6 +107,7 @@
             this.cmbCameraName.Name = "cmbCameraName";
             this.cmbCameraName.Size = new System.Drawing.Size(121, 20);
             this.cmbCameraName.TabIndex = 3;
+            this.cmbCameraName.SelectedIndexChanged += new System.EventHandler(this.cmbCameraName_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -151,6 +145,15 @@
             this.panel2.Size = new System.Drawing.Size(602, 34);
             this.panel2.TabIndex = 2;
             // 
+            // mainView1
+            // 
+            this.mainView1.Content = null;
+            this.mainView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainView1.Location = new System.Drawing.Point(0, 0);
+            this.mainView1.Name = "mainView1";
+            this.mainView1.Size = new System.Drawing.Size(602, 524);
+            this.mainView1.TabIndex = 0;
+            // 
             // FormDeviceTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -163,6 +166,7 @@
             this.Name = "FormDeviceTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "相机设置";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormDeviceTest_FormClosing);
             this.Load += new System.EventHandler(this.FormDeviceTest_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

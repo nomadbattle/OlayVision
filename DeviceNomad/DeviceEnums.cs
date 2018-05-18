@@ -13,6 +13,8 @@ namespace DeviceNomad
 
     public enum DeviceError
     {
+        OpenError,
+        SnapError,
         Disconnected,
     }
 

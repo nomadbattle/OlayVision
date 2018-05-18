@@ -8,7 +8,12 @@ namespace DeviceNomad
     public interface ICamera
     {
         string CameraKey { get; set; }
+        DeviceType CameraType { get; set; }
 
+        bool IsOpen { get; set; }
+
+        event Camera.OnCameraOpenedHandler OnCameraOpened;
+        event Camera.OnCameraClosedHandler OnCameraClosed;
         event Camera.OnImageGrabbedHandler OnImageGrabbed;
         event Camera.OnDeviceErrorHandler OnDeviceError;
 
@@ -16,10 +21,16 @@ namespace DeviceNomad
 
         void InitCamera();
 
+        void Open();
+
+        void Close();
+
         void Snap();
 
         void RunContie();
 
         void StopRun();
+
+        void Dispose();
     }
 }
