@@ -1,4 +1,6 @@
-﻿namespace DeviceNomad
+﻿using UcControls;
+
+namespace DeviceNomad
 {
     partial class FormDeviceTest
     {
@@ -39,7 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbDeviceTypes = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.mainView1 = new JdLogistics.MainView();
+            this.mainView1 = new MainView();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -176,7 +178,7 @@
 
         #endregion
 
-        private JdLogistics.MainView mainView1;
+        private MainView mainView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox cmbRunMode;

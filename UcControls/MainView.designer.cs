@@ -1,4 +1,4 @@
-﻿namespace JdLogistics
+﻿namespace UcControls
 {
     partial class MainView
     {

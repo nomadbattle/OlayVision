@@ -17,7 +17,6 @@ namespace DeviceNomad
         private string _currentCameraKey = null;
         private ICamera _camera = null;
 
-
         public FormDeviceTest()
         {
             InitializeComponent();
@@ -83,42 +82,64 @@ namespace DeviceNomad
             _camera.OnCameraClosed += Camera_OnCameraClosed;
             _camera.OnDeviceError += Camera_OnDeviceError;
             _camera.OnImageGrabbed += Camera_OnImageGrabbed;
-            btnOpenCamera.Text = "关闭相机";
         }
 
         private void Camera_OnImageGrabbed(Bitmap bitmap)
         {
-            
+            try
+            {
+
+                if (InvokeRequired)
+                {
+                    BeginInvoke(new MethodInvoker(() =>
+                    {
+                        mainView1.Content = bitmap;
+                        mainView1.Invalidate();
+                    }));
+                }
+                else
+                {
+                    mainView1.Content = bitmap;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void Camera_OnDeviceError(DeviceError errorType)
         {
-            
+
         }
 
         private void Camera_OnCameraClosed()
         {
+            btnOpenCamera.Text = "打开相机";
         }
 
         private void Camera_OnCameraOpened()
         {
             btnOpenCamera.Enabled = false;
+            btnOpenCamera.Text = "关闭相机";
         }
 
         private void Snap()
         {
-            if(_camera==null)
+            if (_camera == null)
                 return;
             if (!_camera.IsOpen)
             {
                 _camera.Open();
             }
 
-            if (cmbRunMode.SelectedValue == null)
+            if (cmbRunMode.SelectedItem == null)
             {
                 return;
             }
-            CameraRunMode runMode = (CameraRunMode)cmbRunMode.SelectedValue;
+            CameraRunMode runMode = (CameraRunMode)cmbRunMode.SelectedItem;
             if (runMode == CameraRunMode.Single)
             {
 
@@ -164,7 +185,7 @@ namespace DeviceNomad
                     btnRun.Enabled = false;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -174,14 +195,15 @@ namespace DeviceNomad
         {
             try
             {
-                if (btnOpenCamera.Text == "运行")
+                if (btnRun.Text == "运行")
                 {
                     Snap();
-                    btnOpenCamera.Text = "关闭";
+                    btnRun.Text = "关闭";
                 }
                 else
                 {
                     _camera.StopRun();
+                    btnRun.Text = "运行";
                 }
             }
             catch (Exception)
@@ -192,20 +214,18 @@ namespace DeviceNomad
 
         private void cmbCameraName_SelectedIndexChanged(object sender, EventArgs e)
         {
+            _currentCameraKey = cmbCameraName.SelectedItem as string;
             if (_currentCameraKey != null)
             {
                 _camera?.Dispose();
                 btnOpenCamera.Text = "打开相机";
+                btnOpenCamera.Enabled = true;
             }
-
-            _currentCameraKey = cmbCameraName.SelectedValue as string;
-            if (_currentCameraKey == null)
+            else
             {
                 btnOpenCamera.Enabled = false;
                 btnRun.Enabled = false;
             }
-            else
-                btnOpenCamera.Enabled = true;
         }
     }
 }

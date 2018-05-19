@@ -49,12 +49,14 @@ namespace DeviceNomad.DahuaCam
             _mDev.ConnectionLost += OnConnectLoss;
             _mDev.CameraClosed += OnCameraClose;
 
-            if (null == renderThread)
-            {
-                renderThread = new Thread(new ThreadStart(ShowThread));
-                renderThread.Start();
-            }
-            _stopWatch.Start();
+
+
+            //if (null == renderThread)
+            //{
+            //    renderThread = new Thread(new ThreadStart(ShowThread));
+            //    renderThread.Start();
+            //}
+            //_stopWatch.Start();
         }
 
         public void Open()
@@ -62,9 +64,18 @@ namespace DeviceNomad.DahuaCam
             /* 打开设备 */
             if (!_mDev.Open())
             {
+                IsOpen = false;
                 OnDeviceError?.Invoke(DeviceError.OpenError);
             }
+            else
+            {
+                /* 设置缓存个数为8（默认值为16） */
+                _mDev.StreamGrabber.SetBufferCount(8);
 
+                /* 注册码流回调事件 */
+                _mDev.StreamGrabber.ImageGrabbed += OnImageGrabbedN;
+                IsOpen = true;
+            }
         }
 
         public void Close()
@@ -79,6 +90,7 @@ namespace DeviceNomad.DahuaCam
                 _mDev.StreamGrabber.ImageGrabbed -= OnImageGrabbedN;         /* 反注册回调 */
                 _mDev.ShutdownGrab();                                       /* 停止码流 */
                 _mDev.Close();                                              /* 关闭相机 */
+                IsOpen = false;
             }
             catch (Exception exception)
             {
@@ -88,12 +100,6 @@ namespace DeviceNomad.DahuaCam
 
         public void Snap()
         {
-            /* 设置缓存个数为8（默认值为16） */
-            _mDev.StreamGrabber.SetBufferCount(8);
-
-            /* 注册码流回调事件 */
-            _mDev.StreamGrabber.ImageGrabbed += OnImageGrabbedN;
-
             /* 开启码流 */
             if (!_mDev.GrabUsingGrabLoopThread())
             {
@@ -104,12 +110,15 @@ namespace DeviceNomad.DahuaCam
 
         public void RunContie()
         {
-            throw new NotImplementedException();
+            Snap();
         }
 
         public void StopRun()
         {
-            throw new NotImplementedException();
+            if (_mDev != null)
+            {
+                _mDev.ShutdownGrab();
+            }
         }
 
         public void Dispose()
@@ -145,49 +154,50 @@ namespace DeviceNomad.DahuaCam
         /* 码流数据回调 */
         private void OnImageGrabbedN(Object sender, GrabbedEventArgs e)
         {
-            _mutex.WaitOne();
-            _frameList.Add(e.GrabResult.Clone());
-            _mutex.ReleaseMutex();
+            //_mutex.WaitOne();
+            //_frameList.Add(e.GrabResult.Clone());
+            //_mutex.ReleaseMutex();
+            OnImageGrabbed?.Invoke(e.GrabResult.Clone().ToBitmap(false));
         }
 
-        private void ShowThread()
-        {
-            while (_bShowLoop)
-            {
-                if (_frameList.Count == 0)
-                {
-                    Thread.Sleep(10);
-                    continue;
-                }
+        //private void ShowThread()
+        //{
+        //    while (_bShowLoop)
+        //    {
+        //        if (_frameList.Count == 0)
+        //        {
+        //            Thread.Sleep(10);
+        //            continue;
+        //        }
 
-                /* 图像队列取最新帧 */
-                _mutex.WaitOne();
-                IGrabbedRawData frame = _frameList.ElementAt(_frameList.Count - 1);
-                _frameList.Clear();
-                _mutex.ReleaseMutex();
+        //        /* 图像队列取最新帧 */
+        //        _mutex.WaitOne();
+        //        IGrabbedRawData frame = _frameList.ElementAt(_frameList.Count - 1);
+        //        _frameList.Clear();
+        //        _mutex.ReleaseMutex();
 
-                /* 主动调用回收垃圾 */
-                GC.Collect();
+        //        /* 主动调用回收垃圾 */
+        //        GC.Collect();
 
-                /* 控制显示最高帧率为25FPS */
-                if (false == IsTimeToDisplay())
-                {
-                    continue;
-                }
+        //        /* 控制显示最高帧率为25FPS */
+        //        if (false == IsTimeToDisplay())
+        //        {
+        //            continue;
+        //        }
 
-                try
-                {
-                    /* 图像转码成bitmap图像 */
-                    var bitmap = frame.ToBitmap(false);
-                    OnImageGrabbed?.Invoke(bitmap);
-                    bitmap.Dispose();
-                }
-                catch (Exception exception)
-                {
-                    Catcher.Show(exception);
-                }
-            }
-        }
+        //        try
+        //        {
+        //            /* 图像转码成bitmap图像 */
+        //            var bitmap = frame.ToBitmap(false);
+        //            OnImageGrabbed?.Invoke(bitmap);
+        //            bitmap.Dispose();
+        //        }
+        //        catch (Exception exception)
+        //        {
+        //            Catcher.Show(exception);
+        //        }
+        //    }
+        //}
 
         /* 判断是否应该做显示操作 */
         private bool IsTimeToDisplay()

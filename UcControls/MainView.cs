@@ -4,15 +4,12 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace JdLogistics
+namespace UcControls
 {
     public partial class MainView : UserControl
     {
         public Image Content { get; set; }
-
-        internal bool ShowLaserLine = false;
-        internal List<Point> LaserPoints = new List<Point>();
-
+        
         private Matrix modelMatrix = new Matrix();
 
         private Matrix worldMatrix = new Matrix();
@@ -166,17 +163,25 @@ namespace JdLogistics
 
             if (Content != null)
             {
-                e.Graphics.DrawImage(Content, new Point(0, 0));
-            }
 
-            if (ShowLaserLine && LaserPoints.Count > 0)
-            {
-                foreach (Point point in LaserPoints)
+                if (InvokeRequired)
                 {
-                    if(point.X == 0|| point.Y == 0)
-                        continue;
-                    e.Graphics.DrawRectangle(Pens.Red, point.X, point.Y, 1, 1);
+                    BeginInvoke(new MethodInvoker(() =>
+                    {
+                        try
+                        {
+                            e.Graphics.DrawImage(Content, new Point(0, 0));
+                        }
+                        catch (Exception exception)
+                        {
+                        }
+                    }));
                 }
+                else
+                {
+                    e.Graphics.DrawImage(Content, new Point(0, 0));
+                }
+              
             }
         }
 
