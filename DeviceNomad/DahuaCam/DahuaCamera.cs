@@ -13,16 +13,61 @@ namespace DeviceNomad.DahuaCam
     public class DahuaCamera : ICamera
     {
         private IDevice _mDev;
-        private Mutex _mutex = new Mutex();        /* 锁，保证多线程安全 */
-        private List<IGrabbedRawData> _frameList = new List<IGrabbedRawData>();        /* 图像缓存列表 */
+        //private Mutex _mutex = new Mutex();        /* 锁，保证多线程安全 */
+        //private List<IGrabbedRawData> _frameList = new List<IGrabbedRawData>();        /* 图像缓存列表 */
         private const int DefaultInterval = 40;
-        private Stopwatch _stopWatch = new Stopwatch();    /* 时间统计器 */
-        private bool _bShowLoop = true;            /* 线程控制变量 */
-        private Thread renderThread = null;         /* 显示线程  */
+        //private Stopwatch _stopWatch = new Stopwatch();    /* 时间统计器 */
+        //private bool _bShowLoop = true;            /* 线程控制变量 */
+        //private Thread renderThread = null;         /* 显示线程  */
+        private CameraRunMode _runMode = CameraRunMode.Continue;
 
         public string CameraKey { get; set; }
         public DeviceType CameraType { get; set; } = DeviceType.Dahua;
         public bool IsOpen { get; set; } = false;
+
+        public CameraRunMode RunMode
+        {
+            get { return _runMode; }
+            set
+            {
+                if (_runMode != value)
+                {
+                    _runMode = value;
+
+                    switch (value)
+                    {
+                        case CameraRunMode.Continue:
+                            /// 打开SoftTrigger
+                            if (!_mDev.TriggerSet.Close())
+                            {
+                            }
+                            break;
+                        case CameraRunMode.Software:
+                            using (IEnumParameter ep = _mDev.ParameterCollection[ParametrizeNameSet.TriggerSource])
+                            {
+                                ep.SetValue("Software");
+                                ep.Dispose();
+                            }
+                            /// 打开SoftTrigger
+                            if (!_mDev.TriggerSet.Open(TriggerSourceEnum.Software))
+                            {
+                            }
+                            break;
+                        case CameraRunMode.HardwareTrigger:
+                            using (IEnumParameter ep = _mDev.ParameterCollection[ParametrizeNameSet.TriggerSource])
+                            {
+                                ep.SetValue("Line1");
+                                ep.Dispose();
+                            }
+                            /// 打开SoftTrigger
+                            if (!_mDev.TriggerSet.Open(TriggerSourceEnum.Line1))
+                            {
+                            }
+                            break;
+                    }
+                }
+            }
+        }
 
         public event Camera.OnCameraOpenedHandler OnCameraOpened;
         public event Camera.OnCameraClosedHandler OnCameraClosed;
@@ -100,11 +145,21 @@ namespace DeviceNomad.DahuaCam
 
         public void Snap()
         {
-            /* 开启码流 */
-            if (!_mDev.GrabUsingGrabLoopThread())
+            if (RunMode == CameraRunMode.Software)
             {
-                OnDeviceError?.Invoke(DeviceError.SnapError);
-                return;
+                if (!_mDev.ExecuteSoftwareTrigger())
+                {
+                    OnDeviceError?.Invoke(DeviceError.SnapError);
+                    return;
+                }
+            }
+            else
+            {
+                if (!_mDev.GrabUsingGrabLoopThread())
+                {
+                    OnDeviceError?.Invoke(DeviceError.SnapError);
+                    return;
+                }
             }
         }
 
@@ -152,6 +207,7 @@ namespace DeviceNomad.DahuaCam
 
 
         /* 码流数据回调 */
+
         private void OnImageGrabbedN(Object sender, GrabbedEventArgs e)
         {
             //_mutex.WaitOne();
@@ -199,22 +255,22 @@ namespace DeviceNomad.DahuaCam
         //    }
         //}
 
-        /* 判断是否应该做显示操作 */
-        private bool IsTimeToDisplay()
-        {
-            _stopWatch.Stop();
-            long lDisplayInterval = _stopWatch.ElapsedMilliseconds;
-            if (lDisplayInterval <= DefaultInterval)
-            {
-                _stopWatch.Start();
-                return false;
-            }
-            else
-            {
-                _stopWatch.Reset();
-                _stopWatch.Start();
-                return true;
-            }
-        }
+        ///* 判断是否应该做显示操作 */
+        //private bool IsTimeToDisplay()
+        //{
+        //    _stopWatch.Stop();
+        //    long lDisplayInterval = _stopWatch.ElapsedMilliseconds;
+        //    if (lDisplayInterval <= DefaultInterval)
+        //    {
+        //        _stopWatch.Start();
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        _stopWatch.Reset();
+        //        _stopWatch.Start();
+        //        return true;
+        //    }
+        //}
     }
 }

@@ -20,7 +20,8 @@ namespace DeviceNomad
 
     public enum CameraRunMode
     {
-        Single,
         Continue,
+        Software,
+        HardwareTrigger
     }
 }

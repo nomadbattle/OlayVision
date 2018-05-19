@@ -59,8 +59,9 @@ namespace DeviceNomad
         private void InitCameraRunMode()
         {
             cmbRunMode.Items.Clear();
-            cmbRunMode.Items.Add(CameraRunMode.Single);
             cmbRunMode.Items.Add(CameraRunMode.Continue);
+            cmbRunMode.Items.Add(CameraRunMode.Software);
+            cmbRunMode.Items.Add(CameraRunMode.HardwareTrigger);
             cmbRunMode.SelectedIndex = 0;
         }
 
@@ -77,18 +78,17 @@ namespace DeviceNomad
             }
             _camera.CameraKey = _currentCameraKey;
             _camera.InitCamera();
-            _camera.Open();
             _camera.OnCameraOpened += Camera_OnCameraOpened;
             _camera.OnCameraClosed += Camera_OnCameraClosed;
             _camera.OnDeviceError += Camera_OnDeviceError;
             _camera.OnImageGrabbed += Camera_OnImageGrabbed;
+            _camera.Open();
         }
 
         private void Camera_OnImageGrabbed(Bitmap bitmap)
         {
             try
             {
-
                 if (InvokeRequired)
                 {
                     BeginInvoke(new MethodInvoker(() =>
@@ -112,7 +112,7 @@ namespace DeviceNomad
 
         private void Camera_OnDeviceError(DeviceError errorType)
         {
-
+            MessageBox.Show(errorType.ToString());
         }
 
         private void Camera_OnCameraClosed()
@@ -140,21 +140,11 @@ namespace DeviceNomad
                 return;
             }
             CameraRunMode runMode = (CameraRunMode)cmbRunMode.SelectedItem;
-            if (runMode == CameraRunMode.Single)
-            {
+            _camera.RunMode = runMode;
 
-            }
-            else
-            {
-
-            }
             _camera.Snap();
         }
-
-        private void CloseCamera(string key)
-        {
-        }
-
+        
         private void FormDeviceTest_Load(object sender, EventArgs e)
         {
             if (!DesignMode)

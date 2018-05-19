@@ -11,7 +11,8 @@ namespace DeviceNomad
         public string CameraKey { get; set; }
         public DeviceType CameraType { get; set; }
         public bool IsOpen { get; set; }
-        
+        public CameraRunMode RunMode { get; set; }
+
         public delegate void OnCameraOpenedHandler();
         public delegate void OnCameraClosedHandler();
         public delegate void OnImageGrabbedHandler(Bitmap bitmap);

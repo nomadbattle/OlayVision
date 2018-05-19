@@ -10,6 +10,7 @@ namespace DeviceNomad.BaslerCam
        public string CameraKey { get; set; }
        public DeviceType CameraType { get; set; }
        public bool IsOpen { get; set; }
+       public CameraRunMode RunMode { get; set; }
 
        public event Camera.OnCameraOpenedHandler OnCameraOpened;
        public event Camera.OnCameraClosedHandler OnCameraClosed;

@@ -11,6 +11,7 @@ namespace DeviceNomad
         DeviceType CameraType { get; set; }
 
         bool IsOpen { get; set; }
+        CameraRunMode RunMode { get; set; }
 
         event Camera.OnCameraOpenedHandler OnCameraOpened;
         event Camera.OnCameraClosedHandler OnCameraClosed;
