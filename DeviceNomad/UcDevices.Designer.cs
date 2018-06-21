@@ -35,7 +35,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "UcDevices";
-            this.Size = new System.Drawing.Size(243, 376);
+            this.Size = new System.Drawing.Size(215, 441);
             this.ResumeLayout(false);
 
         }

@@ -76,6 +76,12 @@
     <Compile Include="DahuaCam\DahuaCamera.cs" />
     <Compile Include="DeviceEnums.cs" />
     <Compile Include="DeviceN.cs" />
+    <Compile Include="DeviceSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DeviceSetting.Designer.cs">
+      <DependentUpon>DeviceSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDeviceTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,10 @@
     <Compile Include="UcDevices.Designer.cs">
       <DependentUpon>UcDevices.cs</DependentUpon>
     </Compile>
+    <Compile Include="VitrualCam\VitrualCam.cs" />
+    <EmbeddedResource Include="DeviceSetting.resx">
+      <DependentUpon>DeviceSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDeviceTest.resx">
       <DependentUpon>FormDeviceTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -121,6 +131,9 @@
       <Project>{9ca313fc-e5e1-4107-82f2-e8e0a2708254}</Project>
       <Name>UcControls</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
