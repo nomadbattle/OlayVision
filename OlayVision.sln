@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OlayVision", "OlayVision\Ol
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{22C10A30-DDAA-49B0-9829-B07900156830}"
 	ProjectSection(SolutionItems) = preProject
+		Design.txt = Design.txt
 		Readme.txt = Readme.txt
 	EndProjectSection
 EndProject
